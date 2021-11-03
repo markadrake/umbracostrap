@@ -39,3 +39,6 @@ msbuild.wrn
 umbraco
 #wwwroot/media
 wwwroot/umbraco
+
+# Node.js
+node_modules/
