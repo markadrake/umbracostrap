@@ -1,6 +1,48 @@
 ﻿@using Umbraco.Cms.Web.Common.PublishedModels;
-@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<ContentModels.UmbracostrapWebPage>
 @using ContentModels = Umbraco.Cms.Web.Common.PublishedModels;
+
+@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<ContentModels.UmbracostrapWebPage>
+
 @{
-	Layout = null;
+	Layout = "Layout.cshtml";
 }
+
+<ol>
+	<li>Choose your <strong>image format</strong> wisely.</li>
+	<li>Provide <strong>multiple image sizes</strong> for the browser to choose from.</li>
+	<li>Combine both techniques using the <strong>picture</strong> element.</li>
+	<li>Defer loading images below-the-fold with <strong>lazy loading</strong>.</li>
+</ol>
+
+<p>
+	The following image is <em>the original</em>, a <strong>PNG</strong>, <strong>2560px x 1440px</strong>, and <strong>2.92MB</strong>.
+</p>
+<p>
+	<img src="//localhost:44313/media/0zdlxet2/youtube-video-18.png" alt="" />
+</p>
+
+
+<p>
+	Converted to a <strong>JPG</strong>, <strong>2560px x 1440px</strong>, and <strong>231 kB</strong>.
+</p>
+<p>
+	<img src="//localhost:44313/media/0zdlxet2/youtube-video-18.png?format=jpg" alt="" />
+</p>
+
+<p>
+	Using an Image Crop, now <strong>1080px x 1440px</strong>, and <strong>69.7 kB</strong>.
+</p>
+<p>
+	<img src="//localhost:44313/media/0zdlxet2/youtube-video-18.png?format=jpg&width=1080" alt="" />
+</p>
+
+
+<hr />
+
+@*<p>
+	Converted to a <strong>WEBP</strong>, <strong>2560px x 1440px</strong>, and <strong>96 kB</strong>.
+</p>
+<p>
+	<img src="//localhost:44313/media/0zdlxet2/youtube-video-18.png?format=webp" alt="" />
+</p>
+*@

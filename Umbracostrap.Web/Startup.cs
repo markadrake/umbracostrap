@@ -6,6 +6,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Umbraco.Cms.Core.DependencyInjection;
 using Umbraco.Extensions;
+//using WebMarkupMin.AspNetCore5;
 
 namespace Umbracostrap.Web
 {
@@ -46,6 +47,12 @@ namespace Umbracostrap.Web
                 .Build();
 #pragma warning restore IDE0022 // Use expression body for methods
 
+            // WebMarkupMin
+            //services.AddWebMarkupMin()
+            //    .AddHtmlMinification()
+            //    .AddXmlMinification()
+            //    .AddHttpCompression();
+
         }
 
         /// <summary>
@@ -72,6 +79,10 @@ namespace Umbracostrap.Web
                     u.UseBackOfficeEndpoints();
                     u.UseWebsiteEndpoints();
                 });
+
+			// WebMarkupMin
+			//app.UseWebMarkupMin();
         }
+
     }
 }

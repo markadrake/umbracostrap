@@ -1,0 +1,66 @@
+﻿@using ContentModels = Umbraco.Cms.Web.Common.PublishedModels
+@inherits UmbracoViewPage
+@{
+	var node = Model;
+	//var domain = HttpContext.Current.Request.Url.GetLeftPart(UriPartial.Authority);
+	//var request = HttpContext.Current.Request;
+	var currentPage = Umbraco.AssignedContentItem;
+	var isRoot = currentPage.AncestorOrSelf(1).Id == currentPage.Id;
+	string title = "test";
+}
+@*
+	Document Metadata
+	Reference(s):
+	[1] https://developer.mozilla.org/en-US/docs/Web/HTML/Element/head
+*@
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+@*<link rel="shortcut icon" href="@(settings.Favicon)" type="image/x-icon" />*@
+<meta name="googlebot" content="noindex, nofollow">
+<title>@(title)</title>
+<meta name="description" content="@(currentPage.Value<string>("metaDescription"))">
+
+@*
+	SEO Markup
+	Composition: HasSeoMarkup
+	Reference(s):
+	[NA]
+*@
+
+@if (Model.IsComposedOf(HasSeoMarkup.ModelTypeAlias))
+{
+}
+
+
+@*
+	Open Graph Markup
+	Composition: HasOpenGraphMarkup
+	Reference(s):
+	[NA]
+*@
+
+@if (Model.IsComposedOf(HasOpenGraphMarkup.ModelTypeAlias))
+{
+	<meta property="og:title" content="">
+	<meta property="og:type" content="">
+	<meta property="og:image" content="">
+	<meta property="og:url" content="">
+}
+
+@*
+	Twitter Markup
+	Composition: HasTwitterMarkup
+	Reference(s):
+	[1] https://developer.twitter.com/en/docs/twitter-for-websites/cards/overview/abouts-cards
+	[2] https://developer.twitter.com/en/docs/twitter-for-websites/cards/overview/markup
+*@
+
+@if (Model.IsComposedOf(HasTwitterMarkup.ModelTypeAlias))
+{
+	<meta name="twitter:card" content="summary_large_image">
+	<meta name="twitter:site" content="@@nytimes">
+	<meta name="twitter:creator" content="@@SarahMaslinNir">
+	<meta name="twitter:title" content="Parade of Fans for Houston’s Funeral">
+	<meta name="twitter:description" content="NEWARK - The guest list and parade of limousines with celebrities emerging from them seemed more suited to a red carpet event in Hollywood or New York than than a gritty stretch of Sussex Avenue near the former site of the James M. Baxter Terrace public housing project here.">
+	<meta name="twitter:image" content="http://graphics8.nytimes.com/images/2012/02/19/us/19whitney-span/19whitney-span-articleLarge.jpg">
+}
