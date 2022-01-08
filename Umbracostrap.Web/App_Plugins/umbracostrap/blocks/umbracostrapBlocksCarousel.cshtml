@@ -1,0 +1,95 @@
+﻿@using ContentModels = Umbraco.Cms.Web.Common.PublishedModels
+@using Umbraco.Cms.Core.Models.Blocks
+
+@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<Umbraco.Cms.Core.Models.Blocks.BlockListItem>
+
+@{
+	ContentModels.UmbracostrapBlocksCarousel content = (ContentModels.UmbracostrapBlocksCarousel)Model.Content;
+	BlockListModel slides = content.Slides;
+	int slidesCount = slides.Count();
+}
+
+<div id="bsTarget"
+	class="carousel slide"
+	data-bs-ride="carousel">
+	@{ showIndicators("#bsTarget", slidesCount); }
+	@{ renderSlides(); }
+	@{ showControls("#bsTarget"); }
+</div>
+
+@{
+	void showControls(string bsTarget)
+	{
+		if(!content.ShowControls)
+		{
+			return;
+		}
+
+		<button class="carousel-control-prev" 
+			type="button" 
+			data-bs-target="@(bsTarget)" 
+			data-bs-slide="prev">
+			<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+			<span class="visually-hidden">Previous</span>
+		</button>
+		<button class="carousel-control-next" 
+			type="button" 
+			data-bs-target="@(bsTarget)" 
+			data-bs-slide="next">
+			<span class="carousel-control-next-icon" aria-hidden="true"></span>
+			<span class="visually-hidden">Next</span>
+		</button>
+	}
+
+	void showIndicators(string bsTarget, int slidesCount)
+	{
+		if(!content.ShowIndicators)
+		{
+			return;
+		}
+
+		int count = 0;
+
+		<div class="carousel-indicators">
+			@while(count != slidesCount)
+			{
+				string cssClass = count.Equals(0) ? "active" : null;
+				string ariaCurrent = count.Equals(0) ? "true" : "false";
+
+				<button type="button"
+					data-bs-target="@(bsTarget)"
+					data-bs-slide-to="@(count)"
+					class="@(cssClass)"
+					aria-current="@(ariaCurrent)"
+					aria-label="Slide @(count)"></button>
+
+				count++;
+			}			
+		</div>
+	}
+
+	void renderSlides()
+	{
+		int slideIndex = 0;
+
+		<div class="carousel-inner">
+			@foreach (BlockListItem item in content.Slides)
+			{
+				UmbracostrapBlocksCarouselSlide slide = (UmbracostrapBlocksCarouselSlide)item.Content;
+				renderSlide(slide, slideIndex);
+				slideIndex++;
+			}
+		</div>
+	}
+
+	void renderSlide(UmbracostrapBlocksCarouselSlide slide, int slideIndex)
+	{
+		string cssClass = slideIndex.Equals(0) ? "carousel-item active" : "carousel-item";
+
+		<div class="@(cssClass)">
+			<img src="@(slide.Image.Url())" 
+				class="d-block w-100" 
+				alt="@(slide.ImageAltText)">
+		</div>		
+	}
+}

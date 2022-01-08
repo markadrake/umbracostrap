@@ -1,0 +1,13 @@
+﻿@using ContentModels = Umbraco.Cms.Web.Common.PublishedModels
+
+@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<Umbraco.Cms.Core.Models.Blocks.BlockListItem>
+
+@{
+	ContentModels.UmbracostrapBlocksImage content = (ContentModels.UmbracostrapBlocksImage)Model.Content;
+	int width = content.Image.Value<int>("umbracoWidth");
+	int height = content.Image.Value<int>("umbracoHeight");
+	int bytes = content.Image.Value<int>("umbracoBytes");
+	string extension = content.Image.Value<string>("umbracoExtension");
+}
+
+<img src="@(content.Image.Url())" alt="@(extension), @(width) x @(height), @(bytes) bytes">

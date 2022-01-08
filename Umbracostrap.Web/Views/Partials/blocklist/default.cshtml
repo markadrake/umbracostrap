@@ -2,12 +2,24 @@
 @{
     if (!Model.Any()) { return; }
 }
-<div class="umb-block-list">
-    @foreach (var block in Model)
-    {
-        if (block?.ContentUdi == null) { continue; }
-        var data = block.Content;
 
-        @await Html.PartialAsync("BlockList/Components/" + data.ContentType.Alias, block)
+@foreach (var block in Model)
+{
+    if (block?.ContentUdi == null) { continue; }
+    var data = block.Content;
+
+    @*
+        Umbracostrap components are located in the `/app_plugins/` directory.
+    *@
+    if(data.ContentType.Alias.IndexOf("umbracostrap") == 0) {
+        <div data-key="@(data.Key)">
+            @await Html.PartialAsync($"/app_plugins/umbracostrap/blocks/{data.ContentType.Alias}.cshtml", block)
+        </div>
+
+        continue;
     }
-</div>
+
+    <div data-key="@(data.Key)">
+        @await Html.PartialAsync("BlockList/Components/" + data.ContentType.Alias, block)
+    </div>
+}

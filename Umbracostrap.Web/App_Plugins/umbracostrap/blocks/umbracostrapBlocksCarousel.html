@@ -1,0 +1,46 @@
+﻿<!--
+TODO: add javascript and allow carousel functionality from within backoffice	
+-->
+<div ng-controller="umbracostrapBlocksCarouselController">
+	<div id="bsTarget{{block.key}}"
+		 class="carousel slide"
+		 data-bs-ride="carousel">
+		<div class="carousel-indicators"
+			 ng-if="block.data.showIndicators == 1">
+			<button ng-repeat="image in images track by $index"
+					type="button"
+					data-bs-target="bsTarget{{block.key}}"
+					data-bs-slide-to="{{$index}}"
+					ng-class="{'active': $index === 0}"
+					class="@(cssClass)"
+					aria-current="{{$index === 0 ? true : false}}"
+					aria-label="Slide {{$index}}"></button>
+		</div>
+		<div class="carousel-inner"
+			 ng-click="block.edit()">
+			<div ng-repeat="image in images track by $index"
+				 ng-class="{'active': $index === 0}"
+				 class="carousel-item">
+				<img src="{{image}}"
+					 class="d-block w-100"
+					 alt="Image">
+			</div>
+		</div>
+		<button class="carousel-control-prev"
+				type="button"
+				data-bs-target="bsTarget{{block.key}}"
+				data-bs-slide="prev"
+				ng-if="block.data.showControls == 1">
+			<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+			<span class="visually-hidden">Previous</span>
+		</button>
+		<button class="carousel-control-next"
+				type="button"
+				data-bs-target="bsTarget{{block.key}}"
+				data-bs-slide="next"
+				ng-if="block.data.showControls == 1">
+			<span class="carousel-control-next-icon" aria-hidden="true"></span>
+			<span class="visually-hidden">Next</span>
+		</button>
+	</div>
+</div>

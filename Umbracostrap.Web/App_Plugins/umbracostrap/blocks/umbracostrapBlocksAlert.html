@@ -1,0 +1,27 @@
+﻿
+<pre style="display:none;">
+{{block.data}}
+</pre>
+
+<div ng-click="block.edit()">
+
+	<div ng-if="block.data.icon"
+		 class="alert alert-{{block.data.icon}} alert-{{block.data.backgroundColor.label.toLowerCase()}} d-flex align-items-center" 
+		 role="alert">
+		<svg class="bi flex-shrink-0 me-2"
+			 width="24"
+			 height="24"
+			 role="img"
+			 fill="currentColor">
+			<use xlink:href="{{'/app_plugins/umbracostrap/propertyEditors/bootstrap-icons.svg#' + block.data.icon}}" />
+		</svg>
+		<div ng-bind-html="block.data.copy">
+		</div>
+	</div>
+	<div ng-if="!block.data.icon"
+		 class="alert alert-{{block.data.backgroundColor.label.toLowerCase()}}" 
+		 role="alert"
+		 ng-bind-html="block.data.copy">
+	</div>
+
+</div>

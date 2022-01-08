@@ -1,0 +1,36 @@
+﻿{
+	"propertyEditors": [
+		{
+			"alias": "umbracostrapIconsPicker",
+			"name": "Bootstrap Icons Picker",
+			"icon": "icon-code",
+			"group": "Umbracostrap",
+			"editor": {
+				"view": "~/app_plugins/umbracostrap/propertyEditors/bootstrapIconsPicker.html"
+			}
+		},
+		{
+			"alias": "umbracostrapImageCropPicker",
+			"name": "Umbraco Image Crop Picker",
+			"icon": "icon-code",
+			"group": "Umbracostrap",
+			"editor": {
+				"view": "~/app_plugins/umbracostrap/propertyEditors/umbracoImageCropPicker.html"
+			},
+			"prevalues": {
+				"fields": [
+					{
+						"label": "Data Type",
+						"description": "Choose the data type you wish to pull image crop data from.",
+						"key": "dataType",
+						"view": "/app_plugins/umbracostrap/prevalueEditors/dataType.html"
+					}
+				]
+			}
+		}
+	],
+	"javascript": [
+		"~/app_plugins/umbracostrap/propertyEditors/bootstrapIconsPicker.js",
+		"~/app_plugins/umbracostrap/propertyEditors/umbracoImageCropPicker.js"
+	]
+}

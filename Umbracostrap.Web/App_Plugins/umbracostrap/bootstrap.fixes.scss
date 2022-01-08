@@ -1,0 +1,11 @@
+﻿/*
+	Bootstrap: Alerts
+	> The last element to feature text should have it's bottom margin removed.
+*/
+.alert {
+	h1, h2, h3, h4, h5, h6, p {
+		&:last-of-type {
+			margin-bottom: 0;
+		}
+	}
+}

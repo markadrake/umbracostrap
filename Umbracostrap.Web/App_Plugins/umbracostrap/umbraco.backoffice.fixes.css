@@ -1,0 +1,7 @@
+﻿/*
+	Umbraco: Block List 
+	> The rendering area for our block list should not stop at 800px.
+*/
+.umb-block-list__wrapper {
+  max-width: 100%;
+}

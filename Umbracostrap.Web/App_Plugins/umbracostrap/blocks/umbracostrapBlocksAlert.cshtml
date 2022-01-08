@@ -1,0 +1,32 @@
+﻿@using ContentModels = Umbraco.Cms.Web.Common.PublishedModels
+
+@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<Umbraco.Cms.Core.Models.Blocks.BlockListItem>
+
+@{
+	ContentModels.UmbracostrapBlocksAlert content = (ContentModels.UmbracostrapBlocksAlert)Model.Content;
+	string backgroundColor = (content.BackgroundColor != null) ? content.BackgroundColor.Label.ToLower() : "";
+	string cssClass = $"alert alert-{backgroundColor}";
+	bool hasIcon = content.Icon == null ? false : true;
+}
+
+@if (hasIcon)
+{
+	<div class="@(cssClass) d-flex align-items-center" role="alert">
+		<svg class="bi flex-shrink-0 me-2" 
+			width="24" 
+			height="24" 
+			role="img"
+			fill="currentColor">
+				<use xlink:href="/app_plugins/umbracostrap/propertyEditors/bootstrap-icons.svg#@(content.Icon)" />
+		</svg>
+		<div>
+			@(content.Copy)
+		</div>
+	</div>
+}
+else
+{
+	<div class="@(cssClass)" role="alert">
+		@(content.Copy)
+	</div>
+}

@@ -1,0 +1,29 @@
+﻿@using Umbraco.Cms.Web.Common.PublishedModels;
+@using ContentModels = Umbraco.Cms.Web.Common.PublishedModels;
+
+@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<ContentModels.UmbracostrapWebPage>
+
+@{
+	Layout = "Layout.cshtml";
+}
+
+@{
+	IEnumerable<UmbracostrapWebPage> children = Model.Children<UmbracostrapWebPage>();
+	
+	foreach(UmbracostrapWebPage child in children)
+	{
+		<h2>@(child.Name)</h2>
+		try
+		{
+			@Html.GetBlockListHtml(child.BlockList)
+		} catch (Exception error)
+		{
+			<div>
+			<!-- 
+			@(error.Message)
+			-->
+			</div>
+		}
+		<div class="spacer spacer-large"></div>
+	}
+}

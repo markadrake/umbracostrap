@@ -1,9 +1,9 @@
 {
 	"modules": false,
 	"plugins": {
-		"@fullhuman/postcss-purgecss": {
-			"content": [ "./**/*.html" ]
-		},
+		//"@fullhuman/postcss-purgecss": {
+		//	"content": [ "./**/*.html" ]
+		//},
 		"autoprefixer": true,
 		"postcss-import": true,
 		"postcss-url": true,

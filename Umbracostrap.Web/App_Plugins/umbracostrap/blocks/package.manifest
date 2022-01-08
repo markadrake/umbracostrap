@@ -1,0 +1,8 @@
+﻿{
+	"css": [
+	],
+	"javascript": [
+		"~/app_plugins/umbracostrap/blocks/umbracostrapBlocksImage.js",
+		"~/app_plugins/umbracostrap/blocks/umbracostrapBlocksCarousel.js"
+	]
+}

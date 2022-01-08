@@ -1,0 +1,8 @@
+﻿{
+	"css": [
+		"~/app_plugins/umbracostrap/umbraco.backoffice.fixes.min.css",
+		"~/app_plugins/umbracostrap/bootstrap.fixes.min.css"
+	],
+	"javascript": [
+	]
+}

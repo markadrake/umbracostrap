@@ -1,0 +1,36 @@
+﻿<!--
+	
+-->
+
+<div ng-controller="umbracostrapDataTypePrevalueEditor">
+	<div class="step">
+		<div>
+			<p class="header">Step 1</p>
+			<p>Choose an existing data type.</p>
+		</div>
+		<select ng-model="model.value.dataType"
+				ng-options="dataType.name for dataType in dataTypes track by dataType.key">
+		</select>
+	</div>
+	<div class="step">
+		<div>
+			<p class="header">Step 2</p>
+			<p>Choose a crop for each breakpoint.</p>
+		</div>
+		<div>
+			<div ng-repeat="breakpoint in breakpoints">
+				{{breakpoint.label}}
+				<br>
+				<select ng-model="model.value.crops[breakpoint.key]"
+						ng-options="crop.alias for crop in crops track by $index">
+				</select>
+			</div>
+		</div>
+	</div>
+	<div class="step">
+
+	</div>
+	<pre>
+{{model.value}}
+	</pre>
+</div>

@@ -1,0 +1,10 @@
+﻿[
+  {
+    "outputFile": "App_Plugins/umbracostrap/umbraco.backoffice.fixes.css",
+    "inputFile": "App_Plugins/umbracostrap/umbraco.backoffice.fixes.scss"
+  },
+  {
+    "outputFile": "App_Plugins/umbracostrap/bootstrap.fixes.css",
+    "inputFile": "App_Plugins/umbracostrap/bootstrap.fixes.scss"
+  }
+]

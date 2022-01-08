@@ -1,0 +1,11 @@
+.spacer {
+	height: 3rem;
+
+	&.spacer-small {
+		height: 2rem;
+	}
+
+	&.spacer-large {
+		height: 6rem;
+	}
+}

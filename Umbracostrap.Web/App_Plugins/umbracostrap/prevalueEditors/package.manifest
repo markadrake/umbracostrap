@@ -1,0 +1,7 @@
+﻿{
+	"css": [
+	],
+	"javascript": [
+		"~/app_plugins/umbracostrap/prevalueEditors/dataType.js"
+	]
+}
